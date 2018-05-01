@@ -45,7 +45,6 @@ namespace MockDatabase.Testing
             TestContext test = builder.Build();
             IEnumerable<TestClass> myEntities = test.MyEntity;
 
-            //Fix the relational problem
 
 
 

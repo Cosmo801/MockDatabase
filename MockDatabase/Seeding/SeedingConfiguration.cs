@@ -92,32 +92,41 @@ namespace MockDatabase.Seeding
 
         }
 
+        /// <summary>
+        /// Attempt to resolve the relationships between a single entry of each MockCollection type param
+        /// </summary>
+        /// <param name="instance">The TContext instance</param>
+        /// <param name="objList">a List that contains a single entry produced by each IMockCollectionSeedingProfile</param>
         private void JoinObjects(object instance, List<object> objList)
         {
 
-
             foreach(var obj in objList)
             {
-                var properties = obj.GetType().GetProperties();
+                var properties = obj.GetType()
+                                    .GetProperties()
+                                    .Where(p => UsesCustomerSeeder(obj.GetType(), p) == false)
+                                    .Where(p => p.GetValue(obj) == null)
+                                    .Where(p => p.PropertyType != typeof(string));
+
                 foreach(var prop in properties)
-                {
-                    if (prop.GetValue(obj) != null) continue;
-
-                    if (prop.PropertyType.IsClass && prop.PropertyType != typeof(string))
+                {                 
+                    //Resolve  1:1 relationships
+                    if (prop.PropertyType.IsClass && !prop.PropertyType.IsEnumerableType())
                     {
-                        var corresponding = objList.Single(o => o.GetType() == prop.PropertyType);
-
+                        var corresponding = objList.SingleOrDefault(o => o.GetType() == prop.PropertyType);
                         prop.SetValue(obj, corresponding);
                     }
 
-                    if(prop.PropertyType.IsEnumerableType() && prop.PropertyType != typeof(string))
+                    //Resolve 1:M relationships
+                    if(prop.PropertyType.IsEnumerableType())
                     {
-                        var corresponding = objList.Single(o => o.GetType() == prop.PropertyType.GenericTypeArguments[0]);
+                        var corresponding = objList.SingleOrDefault(o => o.GetType() == prop.PropertyType.GenericTypeArguments[0]);
 
                         var collectionType = prop.PropertyType.GenericTypeArguments[0];
                         var listObj = Activator.CreateInstance((typeof(List<>).MakeGenericType(collectionType)));
                         ((IList)listObj).Add(corresponding);
 
+                        //Set the navigation property if it exists
                         var correspondingProp = corresponding.GetType().GetProperties().FirstOrDefault(p => p.PropertyType == collectionType);
                         if (correspondingProp != null) correspondingProp.SetValue(corresponding, prop);
 
@@ -127,6 +136,18 @@ namespace MockDatabase.Seeding
             }
         }
 
-        
+        /// <summary>
+        /// Check if a property uses a user defined IPropertySeeder
+        /// </summary>
+        /// <param name="classType">Type of the class the property is defined on</param>
+        /// <param name="p">The Property info</param>
+        /// <returns>bool</returns>
+        private bool UsesCustomerSeeder(Type classType, PropertyInfo p)
+        {
+            var profile = _seedingProfiles[classType.Name];
+            if (profile.GetSeeder(p.Name) is DefaultPropertySeeder == false) return true;
+            return false;
+
+        }
     }
 }
