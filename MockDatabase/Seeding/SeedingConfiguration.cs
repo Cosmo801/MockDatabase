@@ -40,7 +40,6 @@ namespace MockDatabase.Seeding
             {
                 if (!_seedingProfiles.ContainsKey(classArg.Name))
                 {
-                    //_seedingProfiles.Add(classArg.Name, new DefaultMockCollectionSeedingProfile(classArg));
                     _seedingProfiles.Add(classArg.Name, (IMockCollectionSeedingProfile)Activator.CreateInstance(typeof(MockCollectionSeedingProfile<>).MakeGenericType(classArg)));
                 }
             }
@@ -56,14 +55,11 @@ namespace MockDatabase.Seeding
             LoadDefaultSeedingProfiles();
 
             var instance = Activator.CreateInstance(typeof(TContext));
-            Dictionary<PropertyInfo, List<object>> tempDict = new Dictionary<PropertyInfo, List<object>>();
-
-
             var outerObjList = new List<object>();
 
             var mockCollections = ReflectionHelpers.GetMockCollectionsFromContext<TContext>();
 
-
+            //Create an instance of each MockCollection<T> type param and resolve their relationships
             while(outerObjList.Count < count * mockCollections.Count())
             {
                 var objList = new List<object>();
@@ -81,18 +77,16 @@ namespace MockDatabase.Seeding
 
             }
 
+            //Add MockCollection<T> instances to MockCollection property on TContext
             foreach (var mockCollection in mockCollections)
             {
+                //Initalize
                 mockCollection.GetSetMethod().Invoke(instance, new object[] { Activator.CreateInstance(mockCollection.PropertyType) });
-                var data = outerObjList.Where(o => o.GetType() == mockCollection.PropertyType.GenericTypeArguments[0]);
 
+                var data = outerObjList.Where(o => o.GetType() == mockCollection.PropertyType.GenericTypeArguments[0]);
                 ((IMockCollection)mockCollection.GetValue(instance)).AddData(data.ToList());
                 
             }
-
-
-
-
 
             return (TContext)instance;
 
@@ -101,14 +95,14 @@ namespace MockDatabase.Seeding
         private void JoinObjects(object instance, List<object> objList)
         {
 
-            //finally this is working
-            //now fix for collections
 
             foreach(var obj in objList)
             {
                 var properties = obj.GetType().GetProperties();
                 foreach(var prop in properties)
                 {
+                    if (prop.GetValue(obj) != null) continue;
+
                     if (prop.PropertyType.IsClass && prop.PropertyType != typeof(string))
                     {
                         var corresponding = objList.Single(o => o.GetType() == prop.PropertyType);

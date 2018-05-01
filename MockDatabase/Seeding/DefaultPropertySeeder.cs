@@ -29,11 +29,6 @@ namespace MockDatabase.Seeding
         public object GetPropertyEntry()
         {
             return _analyzer.GetObject();
-            //if (_analyzer != null) return _analyzer.GetObject();
-
-            //if (_type.IsInterface) return null;
-            //if (_type.IsClass) return null;
-            //return Activator.CreateInstance(_type);
         }
 
         public string PropertyName { get; private set; }

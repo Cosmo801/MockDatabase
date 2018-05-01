@@ -43,34 +43,6 @@ namespace MockDatabase.Seeding
                    .Invoke(obj, new object[] { seeder.Value.GetPropertyEntry() });
 
 
-                //if (prop.PropertyType.GetInterfaces().Contains(typeof(IEnumerable)) && prop.PropertyType != typeof(string))
-                //{
-                //    var newOBj = Activator.CreateInstance(typeof(List<>).MakeGenericType(prop.PropertyType.GenericTypeArguments[0]));
-                //    var entry = seeder.Value.GetPropertyEntry();
-                //    if (entry.GetType().GetInterfaces().Contains(typeof(IEnumerable)))
-                //    {
-                //        prop.SetValue(obj, entry, null);
-                //    }
-                //    else
-                //    {
-                //        ((IList)newOBj).Add(entry);
-                //        prop.SetValue(obj, newOBj, null);
-                //    }
-
-
-
-
-                //}
-
-                //else
-                //{
-                //    obj.GetType()
-                //   .GetProperty(seeder.Key)
-                //   .GetSetMethod()
-                //   .Invoke(obj, new object[] { seeder.Value.GetPropertyEntry() });
-                //}
-
-
 
             }
 

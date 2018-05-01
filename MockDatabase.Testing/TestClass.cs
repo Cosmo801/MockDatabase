@@ -11,7 +11,7 @@ namespace MockDatabase.Testing
         public string Name { get; set; }
         public int Number { get; set; }
 
-        public IEnumerable<OtherTestClass> Orders { get; set; }
+        public ICollection<OtherTestClass> Orders { get; set; }
         public ThirdTestClass Info { get; set; }
 
 
