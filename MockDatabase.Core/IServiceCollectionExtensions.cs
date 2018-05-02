@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace MockDatabase.Extensions.DependencyInjection
+namespace Microsoft.Extensions.DependencyInjection
 {
     public static class IServiceCollectionExtensions
     {
@@ -22,6 +22,7 @@ namespace MockDatabase.Extensions.DependencyInjection
             serviceCollection.TryAdd(new ServiceDescriptor(typeof(TContext), builderObj.Build()));
 
             return serviceCollection;
+
 
             
            
