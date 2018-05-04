@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{A2215A69-4FF5-4DAE-8B6C-21FDBC686793}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>MockDatabase.Testing</RootNamespace>
+    <RootNamespace>MockDatabase.Sample</RootNamespace>
     <AssemblyName>MockDatabase.Sample</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

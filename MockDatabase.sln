@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MockDatabase", "MockDatabase\MockDatabase.csproj", "{DDAC892C-FFB8-4F95-BA7D-09FB751365CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockDatabase.Sample", "MockDatabase.Testing\MockDatabase.Sample.csproj", "{A2215A69-4FF5-4DAE-8B6C-21FDBC686793}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockDatabase.Sample", "MockDatabase.Sample\MockDatabase.Sample.csproj", "{A2215A69-4FF5-4DAE-8B6C-21FDBC686793}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockDatabase.Tests", "MockDatabase.Tests\MockDatabase.Tests.csproj", "{DE88EB21-899F-476A-BF49-E8A4EF9E38BA}"
 EndProject

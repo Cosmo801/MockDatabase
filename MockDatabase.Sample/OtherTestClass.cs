@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MockDatabase.Testing
+namespace MockDatabase.Sample
 {
-    public class ThirdTestClass
+    public class OtherTestClass
     {
         public int Id { get; set; }
-        public TestClass TestClass { get; set; }
+        public double Price { get; set; }
 
-
+        public TestClass Parent { get; set; }
 
 
 

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MockDatabase.Testing
+namespace MockDatabase.Sample
 {
     public class TestClass
     {
