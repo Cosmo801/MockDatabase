@@ -1,8 +1,6 @@
 ﻿using MockDatabase.Seeding.Analyzers;
 using System;
-using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
 
 namespace MockDatabase.Seeding
 {
@@ -19,7 +17,7 @@ namespace MockDatabase.Seeding
             _propertyInfo = propertyInfo;
             _type = propertyInfo.PropertyType;
 
-            _analyzer = AnalyzerFactory.GetAnalyzer(_propertyInfo);
+            _analyzer = AnalyzerFactory.GetAnalyzer(propertyInfo.Name, propertyInfo.PropertyType);
         }
 
         /// <summary>

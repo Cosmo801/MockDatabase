@@ -1,22 +1,17 @@
 ﻿using MockDatabase.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MockDatabase.Seeding.Analyzers
 {
     public class DoubleAnalyzer : IAnalyzer
     {
-        private string _propertyName;
+      
 
-        public DoubleAnalyzer(string propertyName)
-        {
-            _propertyName = propertyName;
-        }     
+        public string PropertyName { get; set; }
+        
 
         public object GetObject()
         {
-            if (_propertyName.Contains("Price"))
+            if (PropertyName.Contains("Price"))
             {
                 var prices = new double[] { 30, 55.99, 5.99, 150, 300 };
                 return prices[RandomDataHelper.GetRandomNumber(0, prices.Length)];

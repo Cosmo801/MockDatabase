@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MockDatabase.Seeding
+﻿namespace MockDatabase.Seeding
 {
     /// <summary>
     /// Responsible for seeding a MockCollection type param class

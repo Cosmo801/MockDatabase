@@ -2,6 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>William Knight</Authors>
+    <Company />
+    <Product />
+    <PackageId>Cosmo.MockDatabase</PackageId>
+    <Description>Mocker for interacting with database data.
+For usage see here https://github.com/Cosmo801/MockDatabase/wiki</Description>
+    <PackageTags>mock, mocker, database</PackageTags>
+    <Version>1.0.1</Version>
+    <PackageProjectUrl>https://github.com/Cosmo801/MockDatabase</PackageProjectUrl>
   </PropertyGroup>
 
 </Project>

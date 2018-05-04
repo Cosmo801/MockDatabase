@@ -1,18 +1,13 @@
 ﻿using MockDatabase.Helpers;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MockDatabase.Seeding.Analyzers
 {
     public class DateTimeAnalyzer : IAnalyzer
     {
-        private string _propertyName;
-
-        public DateTimeAnalyzer(string propertyName)
-        {
-            _propertyName = propertyName;
-        }
+     
+        public string PropertyName { get; set; }
+        
 
         public object GetObject()
         {

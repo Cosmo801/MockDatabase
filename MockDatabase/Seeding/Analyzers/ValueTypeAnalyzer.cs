@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MockDatabase.Seeding.Analyzers
 {
@@ -14,6 +12,7 @@ namespace MockDatabase.Seeding.Analyzers
             _valueType = valueType;
         }
 
+        public string PropertyName { get; set; }
 
         public object GetObject()
         {

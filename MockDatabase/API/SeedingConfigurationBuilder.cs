@@ -3,8 +3,6 @@ using MockDatabase.Helpers;
 using MockDatabase.Loader;
 using MockDatabase.Seeding;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MockDatabase.API
 {

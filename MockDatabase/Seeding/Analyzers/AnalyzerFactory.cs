@@ -1,10 +1,7 @@
-﻿using MockDatabase.Helpers;
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace MockDatabase.Seeding.Analyzers
 {
@@ -25,32 +22,35 @@ namespace MockDatabase.Seeding.Analyzers
         /// </summary>
         /// <param name="propertyInfo">The property to get an IAnalyzer for</param>
         /// <returns>IAnalyzer concrete class</returns>
-        public static IAnalyzer GetAnalyzer(PropertyInfo propertyInfo)
+        public static IAnalyzer GetAnalyzer(string propertyName, Type propertyType)
         {
-            var propName = propertyInfo.Name;
-            var type = propertyInfo.PropertyType;
-            var analyzerName = propertyInfo.PropertyType.Name.ToLowerInvariant() + "analyzer";
 
+            var analyzerName = propertyType.Name.ToLowerInvariant() + "analyzer";
 
-            //Maybe change propName to a property on IAnalyzer rather than using constructor
-            var analyzer = _analyzerTypes.FirstOrDefault(o => o.Name.ToLowerInvariant() == analyzerName);
-            if (analyzer != null) return (IAnalyzer)Activator.CreateInstance(analyzer, new object[] {propName});
+            var analyzerType = (_analyzerTypes.FirstOrDefault(o => o.Name.ToLowerInvariant() == analyzerName));        
 
+            if(analyzerType != null)
+            {
+                var analyzerInstance = (IAnalyzer)Activator.CreateInstance(analyzerType);
+                analyzerInstance.PropertyName = propertyName;
+
+                return analyzerInstance;
+            }
 
             //No value type analyzer is found, the default value will be used
-            if (type.IsValueType) return new ValueTypeAnalyzer(type);
+            if (propertyType.IsValueType) return new ValueTypeAnalyzer(propertyType);
 
             //Reference type analyzer will return null for classes, and the relationships between Entities on the MockContext will be used in an attempt to fill it
             return new ReferenceTypeAnalyzer();
 
-            
+
         }
 
         /// <summary>
         /// Gets all IAnalyzers
         /// </summary>
         /// <returns>IEnumerable of IAnalyzer concrete classes</returns>
-        public static IEnumerable<Type> RegisterAnalyzers()
+        private static IEnumerable<Type> RegisterAnalyzers()
         {
 
 

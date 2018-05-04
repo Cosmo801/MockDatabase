@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MockDatabase.Seeding.Analyzers
+﻿namespace MockDatabase.Seeding.Analyzers
 {
     /// <summary>
     /// IAnalyzer are used to produce random and hopefully relevant data for used in default seeding
@@ -11,5 +7,8 @@ namespace MockDatabase.Seeding.Analyzers
     public interface IAnalyzer
     {
         object GetObject();
+        string PropertyName { get; set; }
+        
+
     }
 }

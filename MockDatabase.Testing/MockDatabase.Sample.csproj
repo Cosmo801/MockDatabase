@@ -7,7 +7,7 @@
     <ProjectGuid>{A2215A69-4FF5-4DAE-8B6C-21FDBC686793}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>MockDatabase.Testing</RootNamespace>
-    <AssemblyName>MockDatabase.Testing</AssemblyName>
+    <AssemblyName>MockDatabase.Sample</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,7 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bingo.cs" />
     <Compile Include="OtherTestClass.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

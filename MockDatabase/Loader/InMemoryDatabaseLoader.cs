@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using MockDatabase.Context;
-using MockDatabase.Helpers;
+﻿using MockDatabase.Context;
 using MockDatabase.Seeding;
 
 namespace MockDatabase.Loader

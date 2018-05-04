@@ -1,8 +1,5 @@
 ﻿using MockDatabase.Context;
 using MockDatabase.Seeding;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MockDatabase.Loader
 {
