@@ -20,8 +20,11 @@ namespace MockDatabase.Helpers
 
         public static IEnumerable<PropertyInfo> GetMockCollectionsFromContext(Type context)
         {
+            var test = context.GetProperties();
+
             return context.GetProperties()
-                                   .Where(p => p.PropertyType.Name.Contains("MockCollection"));
+                                   .Where(p => p.PropertyType.Name.Contains("MockCollection"))
+                                   .Where(p => p.PropertyType.GenericTypeArguments[0].IsValueType == false);
         } 
 
 

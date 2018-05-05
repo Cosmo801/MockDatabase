@@ -13,6 +13,9 @@ namespace MockDatabase.Sample
 
         public TestClass Parent { get; set; }
 
+        public IEnumerable<ThirdTestClass> Products { get; set; }
+
+
 
 
     }

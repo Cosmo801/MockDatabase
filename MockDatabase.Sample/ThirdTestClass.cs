@@ -9,7 +9,8 @@ namespace MockDatabase.Sample
     public class ThirdTestClass
     {
         public int Id { get; set; }
-        public TestClass TestClass { get; set; }
+        public string Name { get; set; }
+
 
 
 

@@ -112,7 +112,7 @@ namespace MockDatabase.Seeding
                     //Resolve  1:1 relationships
                     if (prop.PropertyType.IsClass && !prop.PropertyType.IsEnumerableType())
                     {
-                        var corresponding = objList.SingleOrDefault(o => o.GetType() == prop.PropertyType);
+                        var corresponding = objList.FirstOrDefault(o => o.GetType() == prop.PropertyType);
                         prop.SetValue(obj, corresponding);
                     }
 

@@ -12,7 +12,7 @@ namespace MockDatabase.Sample
         public int Number { get; set; }
 
         public ICollection<OtherTestClass> Orders { get; set; }
-        public ThirdTestClass Info { get; set; }
+        
 
 
 
