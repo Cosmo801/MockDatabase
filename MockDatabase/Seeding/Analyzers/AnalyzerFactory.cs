@@ -27,7 +27,7 @@ namespace MockDatabase.Seeding.Analyzers
 
             var analyzerName = propertyType.Name.ToLowerInvariant() + "analyzer";
 
-            var analyzerType = (_analyzerTypes.FirstOrDefault(o => o.Name.ToLowerInvariant() == analyzerName));        
+            var analyzerType = (_analyzerTypes.SingleOrDefault(o => o.Name.ToLowerInvariant() == analyzerName));        
 
             if(analyzerType != null)
             {

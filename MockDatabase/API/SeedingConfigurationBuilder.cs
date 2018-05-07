@@ -7,11 +7,12 @@ using System;
 namespace MockDatabase.API
 {
     /// <summary>
-    /// Helper for creating a SeedingConfiguration for TContext
+    /// Default implementation of ISeedingConfigurationBuilder
+    /// This class will decide what type of IDatabaseLoader to use
     /// </summary>
     /// <typeparam name="TContext"></typeparam>
 
-    public class SeedingConfigurationBuilder<TContext> where TContext : MockContext
+    public class SeedingConfigurationBuilder<TContext> : ISeedingConfigurationBuilder<TContext> where TContext : MockContext
     {
    
        /// <summary>

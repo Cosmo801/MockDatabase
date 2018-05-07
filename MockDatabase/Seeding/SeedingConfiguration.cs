@@ -31,9 +31,9 @@ namespace MockDatabase.Seeding
         /// </summary>
         private void LoadDefaultSeedingProfiles()
         {
-            var mockCollections = typeof(TContext).GetProperties()
-                                             .Where(p => p.PropertyType.Name.Contains("MockCollection"))
-                                             .Select(m => m.PropertyType.GenericTypeArguments[0]);
+    
+            var mockCollections = ReflectionHelpers.GetMockCollectionsFromContext<TContext>()
+                                                   .Select(m => m.PropertyType.GenericTypeArguments[0]);
 
             foreach (var classArg in mockCollections)
             {
