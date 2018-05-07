@@ -7,8 +7,11 @@ See the wiki for more a more detailed usage guide.
 # Quickstart
 
 Define a MockContext concrete class (MockDatabase.Context namespace)
+
 Create a property for each entity you want as a MockCollection<TEntity> (MockDatabase.Context namespace)
+ 
 This process is analogous to defining a DbContext using EntityFramework
+
  
 Use the fluent API to build the database
 
