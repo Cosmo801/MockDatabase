@@ -23,4 +23,4 @@ Main
 
 # Nuget Packages
 
-[Cosmo.MockDatabase(https://www.nuget.org/packages/Cosmo.MockDatabase/)
+[Cosmo.MockDatabase](https://www.nuget.org/packages/Cosmo.MockDatabase/)
