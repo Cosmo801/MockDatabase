@@ -48,10 +48,12 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuilderTests.cs" />
     <Compile Include="Context\Entities\Customer.cs" />
     <Compile Include="Context\Entities\Products.cs" />
     <Compile Include="Context\SimpleContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sample.cs" />
     <Compile Include="SeedingTests.cs" />
   </ItemGroup>
   <ItemGroup>
