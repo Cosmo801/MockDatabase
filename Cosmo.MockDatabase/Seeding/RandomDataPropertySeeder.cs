@@ -21,7 +21,7 @@ namespace Cosmo.MockDatabase.Seeding
 
         public PropertyResult GetInstance()
         {
-            var randNum = RandomHelper.GetRandomNumber(0, _randomData.Count - 1);
+            var randNum = RandomHelper.GetRandomInt(0, _randomData.Count - 1);
 
             return new PropertyResult
             {

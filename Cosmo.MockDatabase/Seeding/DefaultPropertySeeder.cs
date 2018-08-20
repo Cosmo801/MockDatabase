@@ -20,8 +20,7 @@ namespace Cosmo.MockDatabase.Seeding
 
         public PropertyResult GetInstance()
         {
-            return new PropertyResult { PropertyInstance = PropertyAnalyzerFactory.GetAnalyzedObject(_propertyType, _propertyName), PropertyName = _propertyName };
-                       
+            return new PropertyResult { PropertyInstance = PropertyAnalyzerFactory.GetAnalyzedObject(_propertyType, _propertyName), PropertyName = _propertyName };                     
         }
     }
 }

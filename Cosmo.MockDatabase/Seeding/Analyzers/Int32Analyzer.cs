@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cosmo.MockDatabase.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -16,7 +17,8 @@ namespace Cosmo.MockDatabase.Seeding.Analyzers
         {
             if (type != typeof(Int32)) return _next.GetInstance(type, propertyName);
 
-            return 0;
+            var randInts = new int[] { 10, 20, 30, 40, 50 };
+            return randInts[RandomHelper.GetRandomInt(randInts.Length - 1)];
         }
     }
 }

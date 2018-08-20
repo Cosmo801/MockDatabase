@@ -18,6 +18,10 @@ namespace Cosmo.MockDatabase.Builders
 
         public ClassSeederBuilder<TClass> UseRandomDataPropertySeeder<TProperty>(Expression<Func<TClass, TProperty>> selector, List<TProperty> data)
         {
+            if (data == null) throw new ArgumentNullException();
+            if (data.Count == 0) throw new ArgumentException();
+
+
             dynamic dynamicExp = selector;
 
             var propertyName = dynamicExp.Body.Member.Name;

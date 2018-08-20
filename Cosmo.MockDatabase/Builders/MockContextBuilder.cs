@@ -12,7 +12,6 @@ namespace Cosmo.MockDatabase.Builders
         private ContextSeeder<TContext> _contextSeeder;
         private ClassSeederMonitor _classSeederMonitor;
 
-
         public MockContextBuilder()
         {
             _contextSeeder = new ContextSeeder<TContext>();

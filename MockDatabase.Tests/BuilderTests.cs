@@ -1,6 +1,8 @@
 ﻿using Cosmo.MockDatabase.Builders;
+using Cosmo.MockDatabase.Seeding;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MockDatabase.Tests.Context;
+using MockDatabase.Tests.Context.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -79,6 +81,27 @@ namespace MockDatabase.Tests
             var db = builder.BuildDatabase();
 
             Assert.IsTrue(db.Customers.All(c => c.Id == 999));
+
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ClassSeederBuilder_Throws_Exception_For_Null__Input()
+        {
+            var classSeederBuilder = new ClassSeederBuilder<Customer>(new ClassSeeder(typeof(Customer)));
+
+            classSeederBuilder.UseRandomDataPropertySeeder(p => p.FirstName, null);
+
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void ClassSeederBuilder_Throws_Exception_For_Empty__Input()
+
+        {
+            var classSeederBuilder = new ClassSeederBuilder<Customer>(new ClassSeeder(typeof(Customer)));
+
+            classSeederBuilder.UseRandomDataPropertySeeder(p => p.FirstName, new List<string>());
 
         }
     }

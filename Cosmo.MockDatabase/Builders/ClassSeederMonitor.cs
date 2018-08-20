@@ -7,14 +7,12 @@ namespace Cosmo.MockDatabase.Builders
 {
     public class ClassSeederMonitor
     {
-
         public ClassSeederMonitor()
         {
             _classSeeders = new Dictionary<string, IClassSeeder>();
         }
 
         private Dictionary<string, IClassSeeder> _classSeeders;
-
 
         public void AddOrUpdateClassSeeder(string className, IClassSeeder seeder)
         {
