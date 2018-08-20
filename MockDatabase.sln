@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockDatabase.Tests", "MockD
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cosmo.MockDatabase", "Cosmo.MockDatabase\Cosmo.MockDatabase.csproj", "{B4BB8DC8-F57E-44CE-9112-E3B921205182}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cosmo.MockDatabase.Core", "Cosmo.MockDatabase.Core\Cosmo.MockDatabase.Core.csproj", "{D071C07F-D302-4E6F-A68C-D1E15D6CEB71}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B4BB8DC8-F57E-44CE-9112-E3B921205182}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4BB8DC8-F57E-44CE-9112-E3B921205182}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4BB8DC8-F57E-44CE-9112-E3B921205182}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D071C07F-D302-4E6F-A68C-D1E15D6CEB71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D071C07F-D302-4E6F-A68C-D1E15D6CEB71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D071C07F-D302-4E6F-A68C-D1E15D6CEB71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D071C07F-D302-4E6F-A68C-D1E15D6CEB71}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

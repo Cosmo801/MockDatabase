@@ -1,16 +1,14 @@
 ﻿using Cosmo.MockDatabase.Context;
-using System;
-using System.Collections.Generic;
+using Cosmo.MockDatabase.Helpers;
 using System.Linq;
-using System.Text;
 
 namespace Cosmo.MockDatabase.Seeding.Loaders
 {
     public class ContextSeederLoader
     {
-        public void LoadUnsetClassSeeders<T>(ContextSeeder<T> contextSeeder) where T : MockContext
+        public void LoadUnsetClassSeeders<TContext>(ContextSeeder<TContext> contextSeeder) where TContext : MockContext
         {
-            foreach (var prop in typeof(T).GetProperties().Where(p => p.PropertyType.Name.Contains("MockCollection")))
+            foreach (var prop in MockHelpers.GetMockCollectionPropertiesFromMockContext<TContext>())
             {
                 var classType = prop.PropertyType.GenericTypeArguments[0];
                 if (contextSeeder.ClassSeeders.ContainsKey(prop.Name)) continue;

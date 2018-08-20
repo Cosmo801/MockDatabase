@@ -1,9 +1,7 @@
 ﻿using Cosmo.MockDatabase.Context;
 using Cosmo.MockDatabase.Seeding;
 using System;
-using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Text;
 
 namespace Cosmo.MockDatabase.Builders
 {

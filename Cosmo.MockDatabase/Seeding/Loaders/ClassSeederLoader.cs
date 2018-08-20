@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Cosmo.MockDatabase.Seeding.Loaders
+﻿namespace Cosmo.MockDatabase.Seeding.Loaders
 {
     public class ClassSeederLoader
     {

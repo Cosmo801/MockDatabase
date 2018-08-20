@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 
 namespace Cosmo.MockDatabase.Builders
 {
@@ -13,11 +12,13 @@ namespace Cosmo.MockDatabase.Builders
 
         public ClassSeederBuilder(IClassSeeder classSeeder)
         {
-            _classSeeder = classSeeder;
+            _classSeeder = classSeeder ?? throw new ArgumentNullException();
         }
 
         public ClassSeederBuilder<TClass> UseRandomDataPropertySeeder<TProperty>(Expression<Func<TClass, TProperty>> selector, List<TProperty> data)
         {
+            if (selector == null) throw new ArgumentNullException();
+
             if (data == null) throw new ArgumentNullException();
             if (data.Count == 0) throw new ArgumentException();
 

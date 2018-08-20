@@ -15,13 +15,24 @@ namespace MockDatabase.Tests
     public class SeedingTests
     {
         [TestMethod]
-        public void ContextSeeder_Creates_Data()
+        public void Default_ContextSeeder_Creates_Data()
         {
             var seeder = new ContextSeeder<SimpleContext>();
             SimpleContext db = seeder.SeedDatabase();
 
             Assert.IsTrue(db.Customers.Count == 30);
+            Assert.IsTrue(db.Products.Count == 30);
 
+        }
+
+        [TestMethod]
+        public void Default_ContextSeeder_Creates_No_Null_MockCollections()
+        {
+            var seeder = new ContextSeeder<SimpleContext>();
+            SimpleContext db = seeder.SeedDatabase();
+
+            Assert.IsTrue(db.Customers.All(c => c != null));
+            Assert.IsTrue(db.Products.All(c => c != null));
         }
 
         [TestMethod]
@@ -34,6 +45,16 @@ namespace MockDatabase.Tests
             Assert.IsTrue(data.FirstName != null);
 
             
+        }
+
+        [TestMethod]
+        public void Default_ClassSeeder_Creates_No_Null_Data()
+        {
+            var classSeeder = new ClassSeeder(typeof(Customer));
+            var data = (Customer)classSeeder.SeedClass();
+
+            Assert.IsTrue(data.FirstName != null);
+
         }
 
         [TestMethod]

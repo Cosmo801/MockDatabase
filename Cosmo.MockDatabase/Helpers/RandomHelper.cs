@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Cosmo.MockDatabase.Helpers
 {
-    public class RandomHelper
+    internal class RandomHelper
     {
         private static Random _random;
 
