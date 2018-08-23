@@ -7,6 +7,10 @@ using System.Linq;
 
 namespace Cosmo.MockDatabase.Seeding
 {
+    /// <summary>
+    /// A class that creates a MockContext implementation using IClassSeeders for each defined MockCollection
+    /// </summary>
+    /// <typeparam name="T">The MockContext subclass</typeparam>
     public class ContextSeeder<T> where T : MockContext
     {
         public ContextSeeder()
@@ -15,6 +19,11 @@ namespace Cosmo.MockDatabase.Seeding
             _loader = new ContextSeederLoader();
         }
 
+        /// <summary>
+        /// Return an instance of the MockContext subclass.
+        /// </summary>
+        /// <param name="count">Number of objects per each defined MockCollection</param>
+        /// <returns>An instance of the MockContext subclass</returns>
         public T SeedDatabase(int count = 30)
         {
             _loader.LoadUnsetClassSeeders(this);
@@ -28,26 +37,13 @@ namespace Cosmo.MockDatabase.Seeding
                 var objList = new List<object>();
                 var seeder = ClassSeeders[prop.Name];
 
-                //while(objList.Count() < count)
-                //{
-                //    objList.Add(seeder.SeedClass());
-                //}
-
                 while(((IList)prop.GetValue(instance)).Count < count)
                 {
                     ((IList)prop.GetValue(instance)).Add(seeder.SeedClass());
                 }
-
-                //Error here
-                //cast to list
-
-                //prop.SetValue(instance, objList);
-
-                
+            
             
             }
-
-
 
             return instance;
 
@@ -57,8 +53,10 @@ namespace Cosmo.MockDatabase.Seeding
             
         }
 
-
-        public Dictionary<string, IClassSeeder> ClassSeeders { get; set; }
+        /// <summary>
+        /// Get or Set the IClassSeeders 
+        /// </summary>
+        public Dictionary<string, IClassSeeder> ClassSeeders { get; private set; }
 
         private ContextSeederLoader _loader;
     }

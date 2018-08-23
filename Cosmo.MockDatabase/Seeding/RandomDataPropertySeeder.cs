@@ -4,11 +4,12 @@ using System.Collections.Generic;
 
 namespace Cosmo.MockDatabase.Seeding
 {
+    /// <summary>
+    /// The client can provide a list of data to be chosen randomly for each property instance to be created
+    /// </summary>
     public class RandomDataPropertySeeder : IPropertySeeder
     {
-        private List<object> _randomData;
-        private string _propertyName;
-
+      
         public RandomDataPropertySeeder(string propertyName, List<object> randomData)
         {
             if (randomData.Count == 0) throw new ArgumentException();
@@ -16,7 +17,6 @@ namespace Cosmo.MockDatabase.Seeding
             _randomData = randomData ?? throw new ArgumentNullException();
             _propertyName = propertyName ?? throw new ArgumentNullException();
         }
-
 
         public PropertyResult GetInstance()
         {
@@ -28,5 +28,8 @@ namespace Cosmo.MockDatabase.Seeding
                 PropertyInstance = _randomData[randNum]
             };
         }
+
+        private List<object> _randomData;
+        private string _propertyName;
     }
 }

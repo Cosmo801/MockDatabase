@@ -5,10 +5,13 @@ using System.Linq.Expressions;
 
 namespace Cosmo.MockDatabase.Builders
 {
+    /// <summary>
+    /// Fluent API for customizing IClassSeeders for a ContextSeeder
+    /// </summary>
+    /// <typeparam name="TContext">MockContext subclass</typeparam>
     public class MockContextBuilder<TContext> where TContext : MockContext
     {
-        private ContextSeeder<TContext> _contextSeeder;
-        private ClassSeederMonitor _classSeederMonitor;
+   
 
         public MockContextBuilder()
         {
@@ -16,6 +19,11 @@ namespace Cosmo.MockDatabase.Builders
             _classSeederMonitor = new ClassSeederMonitor();
         }
 
+        /// <summary>
+        /// Build the database
+        /// </summary>
+        /// <param name="count">Number of instances per MockCollection</param>
+        /// <returns></returns>
         public TContext BuildDatabase(int count = 30)
         {
             foreach(var entry in _classSeederMonitor.GetClassSeeders())
@@ -28,6 +36,12 @@ namespace Cosmo.MockDatabase.Builders
             return _contextSeeder.SeedDatabase(count);
         }
 
+        /// <summary>
+        /// Customize an IClassSeeder with a ClassSeederBuilder API
+        /// </summary>
+        /// <typeparam name="TClass">Type of the class</typeparam>
+        /// <param name="selector"></param>
+        /// <returns></returns>
         public ClassSeederBuilder<TClass> CustomizeClassSeeder<TClass>(Expression<Func<TContext, MockCollection<TClass>>> selector) where TClass : class
         {
 
@@ -41,5 +55,8 @@ namespace Cosmo.MockDatabase.Builders
 
             return classSeederBuilder;
         }
+
+        private ContextSeeder<TContext> _contextSeeder;
+        private ClassSeederMonitor _classSeederMonitor;
     }
 }

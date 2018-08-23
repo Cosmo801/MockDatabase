@@ -26,6 +26,16 @@ namespace MockDatabase.Tests
         }
 
         [TestMethod]
+        public void ContexSeeder_Returns_Empty_MockContext()
+        {
+            var seeder = new ContextSeeder<SimpleContext>();
+            SimpleContext db = seeder.SeedDatabase(0);
+
+            Assert.IsNotNull(db);
+            Assert.IsTrue(db.Customers.Count == 0);
+        }
+
+        [TestMethod]
         public void Default_ContextSeeder_Creates_No_Null_MockCollections()
         {
             var seeder = new ContextSeeder<SimpleContext>();

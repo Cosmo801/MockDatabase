@@ -6,10 +6,13 @@ using System.Linq.Expressions;
 
 namespace Cosmo.MockDatabase.Builders
 {
+    /// <summary>
+    /// Fluent API for customizing IPropertySeeders for a given IClassSeeder
+    /// </summary>
+    /// <typeparam name="TClass">Type of the class to be seeded</typeparam>
     public class ClassSeederBuilder<TClass>
     {
-        private IClassSeeder _classSeeder;
-
+      
         public ClassSeederBuilder(IClassSeeder classSeeder)
         {
             _classSeeder = classSeeder ?? throw new ArgumentNullException();
@@ -37,7 +40,8 @@ namespace Cosmo.MockDatabase.Builders
 
             return this;
         }
-     
+
+        private IClassSeeder _classSeeder;
 
     }
 }

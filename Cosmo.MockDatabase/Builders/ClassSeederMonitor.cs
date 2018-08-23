@@ -3,15 +3,16 @@ using System.Collections.Generic;
 
 namespace Cosmo.MockDatabase.Builders
 {
-    public class ClassSeederMonitor
+    /// <summary>
+    /// Helper class for implement the fluent API for MockContextBuilder
+    /// </summary>
+    internal class ClassSeederMonitor
     {
         public ClassSeederMonitor()
         {
             _classSeeders = new Dictionary<string, IClassSeeder>();
         }
-
-        private Dictionary<string, IClassSeeder> _classSeeders;
-
+ 
         public void AddOrUpdateClassSeeder(string className, IClassSeeder seeder)
         {
             if (_classSeeders.ContainsKey(className)) _classSeeders[className] = seeder;
@@ -22,6 +23,8 @@ namespace Cosmo.MockDatabase.Builders
         {
             return _classSeeders;
         }
+
+        private Dictionary<string, IClassSeeder> _classSeeders;
 
     }
 }

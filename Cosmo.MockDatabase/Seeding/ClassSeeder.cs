@@ -7,7 +7,6 @@ namespace Cosmo.MockDatabase.Seeding
     public class ClassSeeder : IClassSeeder
     {
     
-
         public ClassSeeder(Type classType)
         {
             ClassType = classType;
